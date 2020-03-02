@@ -1,3 +1,3 @@
-birth_year = int(input('Enter your birth year: '))
-age = 2019 - birth_year
-print('Your age is', age, 'years') 
+weight_pounds = int(input('Enter your weight(in pounds): '))
+weight_kilograms = int(weight_pounds/2.205)
+print('Your weight in kilograms is: ',weight_kilograms)
