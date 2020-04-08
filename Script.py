@@ -12,6 +12,3 @@ password_element.send_keys(password)
 login_element = browser.find_element_by_xpath('/html/body/div[1]/div/div[2]/div/div[1]/div[3]/div/div[1]/form/ul/li[3]/button')
 login_element.click()
 browser.implicitly_wait(300)
-
-
-
