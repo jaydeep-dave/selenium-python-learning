@@ -2,13 +2,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 user_name = 'jaydeep.dave@volansys.com'
 password = 'Hello@123'
-browser = webdriver.Chrome(r"E:\\chromedriver.exe") #location of webdriver
+#location of webdriver
+browser = webdriver.Chrome(r"E:\\chromedriver.exe")
 browser.get('https://dashboard-dev.aylanetworks.com/')
-browser.find_element_by_xpath('/html/body/div[1]/div/div[2]/div/div[1]/div[2]/div/div[2]/div/div[3]/button[2]').click()
-email_element = browser.find_element_by_xpath('/html/body/div[1]/div/div[2]/div/div[1]/div[3]/div/div[1]/form/ul/li[1]/input')
+browser.find_element_by_css_selector('#privacyModal > div.modal-dialog.modal-lg > div > div.modal-footer > button:nth-child(2)').click()
+email_element = browser.find_element_by_name('email')
 email_element.send_keys(user_name)
-password_element = browser.find_element_by_xpath('/html/body/div[1]/div/div[2]/div/div[1]/div[3]/div/div[1]/form/ul/li[2]/input')
+password_element = browser.find_element_by_name('password')
 password_element.send_keys(password)
-login_element = browser.find_element_by_xpath('/html/body/div[1]/div/div[2]/div/div[1]/div[3]/div/div[1]/form/ul/li[3]/button')
-login_element.click()
-browser.implicitly_wait(300)
+login_element = browser.find_element_by_css_selector('#login > ul > li:nth-child(3) > button').click()
+#please enter value of your B-Bridge's DSN into tr:nth-child($value$)
+select_device = browser.find_element_by_css_selector('#devices > div > table > tbody > tr:nth-child(10) > td.green-text-field.ng-binding').click()
