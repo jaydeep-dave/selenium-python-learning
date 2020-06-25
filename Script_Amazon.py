@@ -11,6 +11,9 @@ search = browser.find_element_by_xpath(".//input[@id='twotabsearchtextbox']").se
 browser.find_element_by_xpath(".//div[@class='nav-search-submit nav-sprite']//input[@class='nav-input']").click()
 
 element = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'OnePlus 8 5G (Glacial Green 6GB RAM+128GB Storage)')]"))
+        EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'OnePlus 7T Pro (Haze Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4085mAH Battery)')]")) #enter exact text of your device from the search list
     )
 element.click()
+
+price = browser.find_element_by_xpath(".//td[@class='a-span12']").get_attribute("innerHTML")
+
