@@ -2,7 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions
+from selenium.common.exceptions import NoSuchElementException
 
 browser = webdriver.Chrome(r"E:\\chromedriver.exe") #location of webdriver
 browser.get('https://www.amazon.in/')
@@ -11,9 +12,11 @@ search = browser.find_element_by_xpath(".//input[@id='twotabsearchtextbox']").se
 browser.find_element_by_xpath(".//div[@class='nav-search-submit nav-sprite']//input[@class='nav-input']").click()
 
 element = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//span[contains(text(),'OnePlus 7T Pro (Haze Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4085mAH Battery)')]")) #enter exact text of your device from the search list
+        expected_conditions.presence_of_element_located((By.XPATH, ".//span[contains(text(),'OnePlus 7T Pro (Haze Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4085mAH Battery)')]")) #enter exact text of your device from the search list
     )
 element.click()
 
-price = browser.find_element_by_xpath(".//td[@class='a-span12']").get_attribute("innerHTML")
-
+element = WebDriverWait(browser, 10).until(
+        expected_conditions.visibility_of_element_located((By.XPATH, "//span[@id='priceblock_ourprice']"))
+    )
+element.click()
