@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from selenium.common.exceptions import NoSuchElementException
+import time
 
 browser = webdriver.Chrome(r"E:\\chromedriver.exe") #location of webdriver
 browser.get('https://www.amazon.in/')
@@ -16,7 +16,15 @@ element = WebDriverWait(browser, 10).until(
     )
 element.click()
 
+#reference: https://medium.com/@pavel.tashev/python-and-selenium-open-focus-and-close-a-new-tab-4cc606b73388
+browser.switch_to.window(browser.window_handles[1])
+
 element = WebDriverWait(browser, 10).until(
-        expected_conditions.visibility_of_element_located((By.XPATH, "//span[@id='priceblock_ourprice']"))
+        expected_conditions.visibility_of_element_located((By.XPATH, ".//span[@id='productTitle']"))
     )
-element.click()
+element.get_attribute("innerHTML")
+
+element = WebDriverWait(browser, 10).until(
+        expected_conditions.visibility_of_element_located((By.XPATH, ".//span[@id='priceblock_ourprice']"))
+    )
+element.get_attribute("innerHTML")
