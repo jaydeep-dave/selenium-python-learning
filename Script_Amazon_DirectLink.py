@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 browser = webdriver.Chrome(r"E:\\chromedriver.exe") #location of webdriver
-browser.get('https://www.amazon.in/Test-Exclusive-749/dp/B07DJ8K2KT') #enter URL of your item
+browser.get('https://www.amazon.in/Test-Exclusive-547/dp/B078BNQ318') #enter URL of your item
 
 element = WebDriverWait(browser, 10).until(
         expected_conditions.visibility_of_element_located((By.XPATH, ".//span[@id='priceblock_ourprice']"))
