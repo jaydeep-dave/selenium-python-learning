@@ -21,10 +21,10 @@ browser.switch_to.window(browser.window_handles[1])
 element = WebDriverWait(browser, 10).until(
         expected_conditions.visibility_of_element_located((By.XPATH, ".//span[@id='priceblock_ourprice']"))
     )
-element.get_attribute('innerHTML')
 
-element = WebDriverWait(browser, 10).until(
-        expected_conditions.visibility_of_element_located((By.XPATH, ".//span[@id='priceblock_ourprice']"))
-    )
-
-element.get_attribute('innerHTML')
+price = float(element.text.replace('₹ ','').replace(',',''))
+desired_price = 37000 #enter your desired price here
+if price > desired_price:
+    print("Price is greater than your desired price. Actual price is: ₹",price,"which is ₹",(price - desired_price),"more than your desired price.")
+else:
+    print("Price is less than your desired price. Actual price is: ₹",price,"which is ₹",(desired_price - price),"less than your desired price.")
