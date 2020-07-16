@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-browser = webdriver.Chrome(r"E:\\chromedriver.exe") #location of webdriver
+browser = webdriver.Chrome("E:\\chromedriver") #location of webdriver
 browser.get('https://www.amazon.in/Test-Exclusive-547/dp/B078BNQ318') #enter URL of your item
 
 element = WebDriverWait(browser, 10).until(
