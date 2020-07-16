@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
@@ -17,3 +16,5 @@ if price > desired_price:
     print("Price is greater than your desired price. Actual price is: ₹",price,"which is ₹",(price - desired_price),"more than your desired price.")
 else:
     print("Price is less than your desired price. Actual price is: ₹",price,"which is ₹",(desired_price - price),"less than your desired price.")
+
+browser.quit()
