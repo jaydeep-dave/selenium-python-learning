@@ -1,9 +1,11 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager #https://pypi.org/project/webdriver-manager/
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+import time
 
-browser = webdriver.Chrome("E:\\chromedriver") #location of webdriver
+browser = webdriver.Chrome(ChromeDriverManager().install()) 
 browser.get('https://www.amazon.in/Test-Exclusive-547/dp/B078BNQ318') #enter URL of your item
 
 element = WebDriverWait(browser, 10).until(
@@ -17,4 +19,5 @@ if price > desired_price:
 else:
     print("Price is less than your desired price. Actual price is: ₹",price,"which is ₹",(desired_price - price),"less than your desired price.")
 
+time.sleep(3)
 browser.quit()
