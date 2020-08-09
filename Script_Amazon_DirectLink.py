@@ -14,7 +14,7 @@ element = WebDriverWait(browser, 10).until(
     )
 
 price = float(element.text.replace('₹ ','').replace(',',''))
-desired_price = 47000 #enter your desired price here
+desired_price = 37000 #enter your desired price here
 if price > desired_price:
     print("Price is greater than your desired price. Actual price is: ₹",price,"which is ₹",(price - desired_price),"more than your desired price.")
 else:
